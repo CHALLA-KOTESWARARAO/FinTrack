@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { FinanceProvider } from './context/FinanceContext';
 import { useFinance } from './hooks/useFinance';
 
@@ -55,7 +55,7 @@ const PublicOnlyRoute = () => {
 export default function App() {
   return (
     <FinanceProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {/* Public Login Route */}
           <Route element={<PublicOnlyRoute />}>
@@ -76,7 +76,7 @@ export default function App() {
           {/* Fallback Catch-all Route */}
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </FinanceProvider>
   );
 }

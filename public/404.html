@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <title>Page not found</title>
     <script>
-      const pathname = window.location.pathname;
+      const path = window.location.pathname;
       const search = window.location.search;
       const hash = window.location.hash;
-      const parts = pathname.split('/');
-      const repoRoot = parts.slice(0, -1).join('/') || '/';
-      const route = pathname.slice(repoRoot.length) || '/';
-      const base = repoRoot === '/' ? '' : repoRoot;
+      const repoName = 'FinTrack';
+      const segments = path.split('/').filter(Boolean);
+      const base = segments[0] === repoName ? `/${repoName}` : '';
+      const route = path.replace(base, '') || '/';
       window.location.replace(`${base}/#${route}${search}${hash}`);
     </script>
   </head>
